@@ -8,6 +8,6 @@ import StarRating from "./components/StarRating.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <App /> */}
-    <StarRating />
+    <StarRating color="#7e22ce" />
   </React.StrictMode>
 );

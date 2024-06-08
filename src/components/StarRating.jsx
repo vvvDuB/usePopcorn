@@ -12,8 +12,12 @@ const starContainerStyle = {
   cursor: "pointer",
 };
 
-const StarRating = ({ maxRating = 10 }) => {
+const StarRating = ({ maxRating = 10, color = "#facc15" }) => {
   const [rating, setRating] = useState(1);
+
+  const messages = ["bad", "good", "nice", "perfect", "wonderful"];
+
+  const rate = Math.round(rating - rating / 2);
 
   return (
     <div style={containerStyle}>
@@ -22,25 +26,26 @@ const StarRating = ({ maxRating = 10 }) => {
           <Star
             key={i}
             stars={rating}
+            color={color}
             num={i + 1}
             onChangeStar={(num) => setRating(num)}
           />
         ))}
       </div>
-      <h1>{rating}</h1>
+      <h1>{messages[rate - 1]}</h1>
     </div>
   );
 };
 
-const Star = ({ stars, num, onChangeStar }) => {
+const Star = ({ stars, num, onChangeStar, color }) => {
   return (
     <svg
       onMouseOver={() => onChangeStar(num)}
       xmlns="http://www.w3.org/2000/svg"
-      fill={stars >= num ? "#facc15" : "none"}
+      fill={stars >= num ? color : "none"}
       viewBox="0 0 24 24"
       strokeWidth={1.5}
-      stroke="#facc15"
+      stroke={color}
       style={{ width: "24px", height: "24px" }}
     >
       <path
